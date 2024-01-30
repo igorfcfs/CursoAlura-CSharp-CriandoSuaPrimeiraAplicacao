@@ -1,0 +1,7 @@
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\bin\Debug\ScreenSound.exe.config
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\bin\Debug\ScreenSound.exe
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\bin\Debug\ScreenSound.pdb
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\obj\Debug\ScreenSound.csproj.AssemblyReference.cache
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\obj\Debug\ScreenSound.csproj.CoreCompileInputs.cache
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\obj\Debug\ScreenSound.exe
+D:\projetos\Alura\AprendaAProgramarEmC#ComOrientacaoAObjetos\01.PrimeiroProgramaEmC#\01.C#CriandoSuaPrimeiraAplicacao\ScreenSound\obj\Debug\ScreenSound.pdb
