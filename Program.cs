@@ -54,7 +54,7 @@ namespace ScreenSound
                     AvaliarBandas();
                     break;
                 case 4:
-                    Console.WriteLine("\nExibindo média das bandas");
+                    ExibirMediaBandas();
                     break;
                 case -1:
                     Console.WriteLine("\nObrigado :)");
@@ -63,6 +63,41 @@ namespace ScreenSound
                     Console.WriteLine("Opção Inválida.");
                     break;
             }
+        }
+
+        private static void ExibirMediaBandas()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+▒█▀▄▀█ █▀▀ █▀▀▄ ░▀░ █▀▀█ 　 █▀▀▄ █▀▀█ 　 ▒█▀▀█ █▀▀█ █▀▀▄ █▀▀▄ █▀▀█ 
+▒█▒█▒█ █▀▀ █░░█ ▀█▀ █▄▄█ 　 █░░█ █▄▄█ 　 ▒█▀▀▄ █▄▄█ █░░█ █░░█ █▄▄█ 
+▒█░░▒█ ▀▀▀ ▀▀▀░ ▀▀▀ ▀░░▀ 　 ▀▀▀░ ▀░░▀ 　 ▒█▄▄█ ▀░░▀ ▀░░▀ ▀▀▀░ ▀░░▀
+");
+            Console.Write("Digite a banda que quer avaliar: ");
+            string banda = Console.ReadLine();
+            if (bandas.ContainsKey(banda))
+            {
+                List<int> notas = bandas[banda];
+                double media = notas.Average();
+                Console.WriteLine($"A media da banda {banda} é {media}");
+
+                //int counter = 1;
+                /*foreach (var band in bandas.Values)
+                {
+                    Console.WriteLine($"As notais atuais da banda {banda} são:\n{counter + ". " + band}");
+                    double media = band.Average();
+                    Console.WriteLine($"A media da banda {banda} é {media}");
+                }*/
+            }
+            else
+            {
+                Console.WriteLine($"A banda {banda} nao foi encontrada");
+            }
+            Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+            
         }
 
         private static void AvaliarBandas()
