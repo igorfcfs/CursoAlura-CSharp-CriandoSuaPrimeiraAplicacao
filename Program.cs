@@ -14,7 +14,8 @@ namespace ScreenSound
             ExibirOpcoesMenu();
         }
 
-        static List<string> bandas = new List<string>();
+        //static List<string> bandas = new List<string>();
+        static Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>();
 
         static void ExibirLogo()
         {
@@ -49,8 +50,11 @@ namespace ScreenSound
                 case 2:
                     ExibirBandas();
                     break;
+                case 3:
+                    AvaliarBandas();
+                    break;
                 case 4:
-                    Console.WriteLine("\nAvaliando bandas...");
+                    Console.WriteLine("\nExibindo média das bandas");
                     break;
                 case -1:
                     Console.WriteLine("\nObrigado :)");
@@ -61,6 +65,32 @@ namespace ScreenSound
             }
         }
 
+        private static void AvaliarBandas()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+░█▀▀█ ▀█░█▀ █▀▀█ █░░ ░▀░ █▀▀█ █▀▀█ 　 ▒█▀▀█ █▀▀█ █▀▀▄ █▀▀▄ █▀▀█ 
+▒█▄▄█ ░█▄█░ █▄▄█ █░░ ▀█▀ █▄▄█ █▄▄▀ 　 ▒█▀▀▄ █▄▄█ █░░█ █░░█ █▄▄█ 
+▒█░▒█ ░░▀░░ ▀░░▀ ▀▀▀ ▀▀▀ ▀░░▀ ▀░▀▀ 　 ▒█▄▄█ ▀░░▀ ▀░░▀ ▀▀▀░ ▀░░▀
+");
+            Console.Write("Digite a banda que quer avaliar: ");
+            string banda = Console.ReadLine();
+            if (bandas.ContainsKey(banda))
+            {
+                Console.Write($"Qual nota a banda {banda} merece? ");
+                int nota = int.Parse(Console.ReadLine());
+                bandas[banda].Add(nota);
+                Console.WriteLine($"A nota foi registrada com sucesso para a banda {banda}");
+            } else
+            {
+                Console.WriteLine($"A banda {banda} nao foi encontrada");
+            }
+            Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+        }
+
         private static void ExibirBandas()
         {
             Console.Clear();
@@ -69,19 +99,23 @@ namespace ScreenSound
 ▒█▀▀▄ █▄▄█ █░░█ █░░█ █▄▄█ ▀▀█ 　 ▒█▄▄▀ █▀▀ █░▀█ ▀█▀ ▀▀█ ░░█░░ █▄▄▀ █▄▄█ █░░█ █▄▄█ ▀▀█ 
 ▒█▄▄█ ▀░░▀ ▀░░▀ ▀▀▀░ ▀░░▀ ▀▀▀ 　 ▒█░▒█ ▀▀▀ ▀▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀░▀▀ ▀░░▀ ▀▀▀░ ▀░░▀ ▀▀▀
 ");
-            if (bandas.Count == 0)
+            if (bandas.Keys.Count == 0)
             {
                 Console.WriteLine("Nenhuma banda registrada ainda.");
             }
             else
             {
                 int counter = 1;
-                foreach (var band in bandas)
+                foreach (var band in bandas.Keys)
                 {
                     Console.Write($"{counter}. ");
                     Console.WriteLine(band);
                     counter++;
                 }
+                /*foreach (var band in bandas)
+                {
+                    Console.Write($"Banda: {band.Key} | Nota: {band.Value}");
+                }*/
             }
             Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
             Console.ReadKey();
@@ -99,7 +133,7 @@ namespace ScreenSound
 ");
             Console.Write("Digite o nome da banda que deseja registrar: ");
             string bandaRegistrada = Console.ReadLine();
-            bandas.Add(bandaRegistrada);
+            bandas.Add(bandaRegistrada, new List<int>());
             Console.WriteLine($"A banda {bandaRegistrada} foi registrada");
             //Thread.Sleep(2000);
             Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
