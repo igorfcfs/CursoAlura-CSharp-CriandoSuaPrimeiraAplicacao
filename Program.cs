@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ScreenSound
@@ -10,11 +11,12 @@ namespace ScreenSound
     {
         static void Main(string[] args)
         {
-            ExibirMensagem();
             ExibirOpcoesMenu();
         }
 
-        static void ExibirMensagem()
+        static List<string> bandas = new List<string>();
+
+        static void ExibirLogo()
         {
             Console.WriteLine(@"
 ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
@@ -29,6 +31,7 @@ namespace ScreenSound
 
         static void ExibirOpcoesMenu()
         {
+            ExibirLogo();
             Console.WriteLine("\nDigite 1 para registrar uma banda.");
             Console.WriteLine("Digite 2 para mostrar todas as bandas.");
             Console.WriteLine("Digite 3 para avaliar uma banda.");
@@ -41,10 +44,10 @@ namespace ScreenSound
             switch (int.Parse(opcaoEscolhida))
             {
                 case 1:
-                    Console.WriteLine("\nRegistrando banda...");
+                    RegistrarBanda();
                     break;
                 case 2:
-                    Console.WriteLine("\nMostrando bandas...");
+                    ExibirBandas();
                     break;
                 case 4:
                     Console.WriteLine("\nAvaliando bandas...");
@@ -57,5 +60,54 @@ namespace ScreenSound
                     break;
             }
         }
+
+        private static void ExibirBandas()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+▒█▀▀█ █▀▀█ █▀▀▄ █▀▀▄ █▀▀█ █▀▀ 　 ▒█▀▀█ █▀▀ █▀▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀█ █▀▀█ █▀▀▄ █▀▀█ █▀▀ 
+▒█▀▀▄ █▄▄█ █░░█ █░░█ █▄▄█ ▀▀█ 　 ▒█▄▄▀ █▀▀ █░▀█ ▀█▀ ▀▀█ ░░█░░ █▄▄▀ █▄▄█ █░░█ █▄▄█ ▀▀█ 
+▒█▄▄█ ▀░░▀ ▀░░▀ ▀▀▀░ ▀░░▀ ▀▀▀ 　 ▒█░▒█ ▀▀▀ ▀▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀░▀▀ ▀░░▀ ▀▀▀░ ▀░░▀ ▀▀▀
+");
+            if (bandas.Count == 0)
+            {
+                Console.WriteLine("Nenhuma banda registrada ainda.");
+            }
+            else
+            {
+                int counter = 1;
+                foreach (var band in bandas)
+                {
+                    Console.Write($"{counter}. ");
+                    Console.WriteLine(band);
+                    counter++;
+                }
+            }
+            Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+        }
+
+        private static void RegistrarBanda()
+        {
+            Console.Clear();
+            Console.WriteLine(@"
+▒█▀▀█ █▀▀ █▀▀▀ ░▀░ █▀▀ ▀▀█▀▀ █▀▀█ █▀▀█ 　 █▀▀▄ █▀▀ 　 ▒█▀▀█ █▀▀█ █▀▀▄ █▀▀▄ █▀▀█ █▀▀ 
+▒█▄▄▀ █▀▀ █░▀█ ▀█▀ ▀▀█ ░░█░░ █▄▄▀ █░░█ 　 █░░█ █▀▀ 　 ▒█▀▀▄ █▄▄█ █░░█ █░░█ █▄▄█ ▀▀█ 
+▒█░▒█ ▀▀▀ ▀▀▀▀ ▀▀▀ ▀▀▀ ░░▀░░ ▀░▀▀ ▀▀▀▀ 　 ▀▀▀░ ▀▀▀ 　 ▒█▄▄█ ▀░░▀ ▀░░▀ ▀▀▀░ ▀░░▀ ▀▀▀
+");
+            Console.Write("Digite o nome da banda que deseja registrar: ");
+            string bandaRegistrada = Console.ReadLine();
+            bandas.Add(bandaRegistrada);
+            Console.WriteLine($"A banda {bandaRegistrada} foi registrada");
+            //Thread.Sleep(2000);
+            Console.WriteLine("\nDigite alguma tecla para voltar ao menu principal.");
+            Console.ReadKey();
+            Console.Clear();
+            ExibirOpcoesMenu();
+        }
+
+
     }
 }
